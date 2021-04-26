@@ -186,3 +186,5 @@ def on_end_of_word(self, textview, start, end, word, char, editmode): #If you do
       textview.stop_emission('end_of_word')
 ```
 Use "name" if you have multiple pages with the same name and want to specify which one. Otherwise, "basename" is fine. (basename of Characters is "Characters", but name is "Planning:Characters")
+
+#### If you have any issues or questions or really anything to say at all, please contact me via reddt (u/HorseLuvver) or open an issue here on Github. I would be happy to help!
