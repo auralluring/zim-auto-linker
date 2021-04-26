@@ -2,7 +2,7 @@
 Hello! This is a plugin I wrote to automatically link to specified pages.
 
 ## How it works
-Throughout this document, I will be using the example of a notebook created to organized the elements of a story. We will be working specifically with the characters.
+Throughout this document, I will be using the example of a notebook created to organize the elements of a story. We will be working specifically with the characters.
 
 So, imagine you have a page, Characters. On this page, you have a list of all the story's characters, let's say "Bob", "Sandy", and "Michael".
 You have them listed on the page like this:
