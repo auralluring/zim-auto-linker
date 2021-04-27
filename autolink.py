@@ -71,9 +71,10 @@ class AutoLinkerPageViewExtension(PageViewExtension):
 			links = self.link_collector(buffer.notebook.name)
 			clean_word, prefix, suffix = clean(word)
 			if clean_word in links.keys():
-				buffer.delete(start, buffer.get_insert_iter())
-				buffer.insert_at_cursor(prefix)
-				buffer.insert_link_at_cursor(clean_word, links[clean_word])
-				buffer.insert_at_cursor(suffix + ' ')
+				with buffer.tmp_cursor(start):
+					buffer.delete(start, end)
+					buffer.insert_at_cursor(prefix)
+					buffer.insert_link_at_cursor(clean_word, links[clean_word])
+					buffer.insert_at_cursor(suffix)
 				buffer.set_modified(True)
 				textview.stop_emission('end_of_word')
