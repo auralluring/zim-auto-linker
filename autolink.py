@@ -41,40 +41,26 @@ class AutoLinkerPageViewExtension(PageViewExtension):
 
 	def link_collector(self, notebook):
 		linklist = {}
-		if notebook == "telluris":
-			f = open("Notebooks/telluris/Plot/Characters.txt")
+		if notebook == "Notebook": #change this to your notebook name
+			f = open("") #path to the parent page text file (use slashes, not colons)
 			for line in f.read().splitlines():
-				if line[:3] == '[[+' and line[-2:] == ']]':
-					linklist[line[3:-2]] = "Plot:Characters:" + line[3:-2]
-			f = open("Notebooks/telluris/World/Flora&Fauna/Animals.txt")
-			for line in f.read().splitlines():
-				if line[:3] == '[[+' and line[-2:] == ']]':
-					linklist[line[3:-2]] = "World:Flora&Fauna:Animals:" + line[3:-2]
-			f = open("Notebooks/telluris/World/Flora&Fauna/Plants.txt")
-			for line in f.read().splitlines():
-				if line[:3] == '[[+' and line[-2:] == ']]':
-					linklist[line[3:-2]] = "World:Flora&Fauna:Plants:" + line[3:-2]
-			f = open("Notebooks/telluris/World/Flora&Fauna/SentientRaces.txt")
-			for line in f.read().splitlines():
-				if line[:3] == '[[+' and line[-2:] == ']]':
-					linklist[line[3:-2]] = "World:Flora&Fauna:SentientRaces:" + line[3:-2]
-		elif notebook == 'Superstore':
-			f = open("Notebooks/Superstore/Characters.txt")
-			for line in f.read().splitlines():
-				if line[:3] == '[[+' and line[-2:] == ']]':
-					linklist[line[3:-2]] = "Characters:" + line[3:-2]
+				if line[:3] == '[[+' and line[-2:] == ']]': #I'm assuming you just have a list of pages linked like [[+Name]]. If not, correct it.
+					linklist[line[3:-2]] = "" + line[3:-2] #the path where the pages that will be linked to are (colons this time)
+			f.close()
 		return linklist
 	
 	def on_end_of_word(self, textview, start, end, word, char, editmode):
 		buffer = textview.get_buffer()
-		if not (buffer.page.basename == 'Characters' or buffer.page.basename == 'Animals' or buffer.page.basename == 'Plants' or buffer.page.basename == 'SentientRaces'):
-			links = self.link_collector(buffer.notebook.name)
-			clean_word, prefix, suffix = clean(word)
-			if clean_word in links.keys():
-				with buffer.tmp_cursor(start):
-					buffer.delete(start, end)
-					buffer.insert_at_cursor(prefix)
-					buffer.insert_link_at_cursor(clean_word, links[clean_word])
-					buffer.insert_at_cursor(suffix)
-				buffer.set_modified(True)
-				textview.stop_emission('end_of_word')
+		logger.debug("End of word")
+		links = self.link_collector(buffer.notebook.name)
+		clean_word, prefix, suffix = clean(word)
+		logger.debug("Word: %s", clean_word)
+		if clean_word in links.keys():
+			with buffer.tmp_cursor(start):
+				buffer.delete(start, end)
+				buffer.insert_at_cursor(prefix)
+				buffer.insert_link_at_cursor(clean_word, links[clean_word])
+				buffer.insert_at_cursor(suffix)
+			buffer.set_modified(True)
+			textview.stop_emission('end_of_word')
+		else: logger.debug(links)
