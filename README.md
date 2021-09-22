@@ -32,7 +32,7 @@ Cool, right?
 Of course, it doesn't just magically start working. You have to set it up. (:() Let's get into how to do that.
 
 ## Setup
-First, make sure the plugin is in the folder ".local/share/zim/plugins". (Linux, I coudn't get it to work on Windows and haven't tested on Mac.) Then, edit the autolink.py file with a text editor.
+First, make sure the plugin is in the folder ".local/share/zim/plugins". (Linux, I coudn't get it to work on Windows and haven't tested on Mac.) Then, edit the autolink.py file with a text editor. If you want to test it along the way or just use it after, you will have to close and reopen zim every time you make a change.
 
 So let's say the notebook is named Story, and it's set up like this.
 ```
