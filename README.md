@@ -6,14 +6,14 @@ Throughout this document, I will be using the example of a notebook created to o
 
 So, imagine you have a page, Characters. On this page, you have a list of all the story's characters, let's say "Bob", "Sandy", and "Michael".
 You have them listed on the page like this:
-~~~python
+~~~
 +Bob    
 +Sandy     
 +Michael 
 ~~~
 
 Zim automatically links them, of course. In the source, it looks like this:
-```python
+```
 [[+Bob]]
 [[+Sandy]]
 [[+Michael]]
@@ -25,7 +25,7 @@ A sentence like this: "Bob, Michael, and Sandy went to the store."
 will get turned into this (bold is link): "__Bob__, __Michael__, and __Sandy__ went to the store."
 
 In the source, it looks like:
-~~~python
+~~~
 "[[Characters:Bob|Bob]], [[Characters:Michael|Michael]], and [[Characters:Sandy|Sandy]] went to the store."
 ~~~
 Cool, right?
@@ -35,7 +35,7 @@ Of course, it doesn't just magically start working. You have to set it up. (:() 
 First, make sure the plugin is in the folder ".local/share/zim/plugins". (Linux, I coudn't get it to work on Windows and haven't tested on Mac.) Then, edit the autolink.py file with a text editor. If you want to test it along the way or just use it after, you will have to close and reopen zim every time you make a change.
 
 So let's say the notebook is named Story, and it's set up like this.
-```python
+```
 > Planning
 > > Characters
 > > > Bob
