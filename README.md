@@ -55,6 +55,7 @@ def link_collector(self, notebook): #you'll probably just want to read the githu
 		for line in f.read().splitlines():
 			if line[:3] == '[[+' and line[-2:] == ']]': #I'm assuming you just have a list of pages linked like [[+Name]]. If not, correct it.
 				linklist[line[3:-2]] = "" + line[3:-2] #the path where the pages that will be linked to are (colons this time)
+		f.close()
 	return linklist
 ```
 
@@ -104,6 +105,7 @@ def link_collector(self, notebook): #you'll probably just want to read the githu
 		for line in f.read().splitlines():
 			if line[:3] == '[[+' and line[-2:] == ']]': #I'm assuming you just have a list of pages linked like [[+Name]]. If not, correct it.
 				linklist[line[3:-2]] = "Planning:Characters:" + line[3:-2] #the path where the pages that will be linked to are (colons this time)
+		f.close()
 	return linklist
 ```
 
@@ -129,7 +131,7 @@ def link_collector(self, notebook): #you'll probably just want to read the githu
           
 	return linklist
 ```
-If you then wanted to add another page to one of them, do the same thing with the ```f = open("")``` and the for loop. Like this:
+If you then wanted to add another page to one of them, do the same thing with everything in between and including ```f = open("")``` and ```f.close()```. Like this:
 ```python
 def link_collector(self, notebook): #you'll probably just want to read the github page for this
 	linklist = {}
@@ -139,17 +141,20 @@ def link_collector(self, notebook): #you'll probably just want to read the githu
 		for line in f.read().splitlines():
 			if line[:3] == '[[+' and line[-2:] == ']]': #I'm assuming you just have a list of pages linked like [[+Name]]. If not, correct it.
 				linklist[line[3:-2]] = "" + line[3:-2] #the path where the pages that will be linked to are (colons this time)
+		f.close()
           
 		f = open("") #path to the parent page text file (use slashes, not colons)
 		for line in f.read().splitlines():
 			if line[:3] == '[[+' and line[-2:] == ']]': #I'm assuming you just have a list of pages linked like [[+Name]]. If not, correct it.
 				linklist[line[3:-2]] = "" + line[3:-2] #the path where the pages that will be linked to are (colons this time)
+		f.close()
           
 	elif notebook == "Notebook": #change this to your notebook name
 		f = open("") #path to the parent page text file (use slashes, not colons)
 		for line in f.read().splitlines():
 			if line[:3] == '[[+' and line[-2:] == ']]': #I'm assuming you just have a list of pages linked like [[+Name]]. If not, correct it.
 				linklist[line[3:-2]] = "" + line[3:-2] #the path where the pages that will be linked to are (colons this time)
+		f.close()
           
 	return linklist
 ```
