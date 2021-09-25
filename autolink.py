@@ -51,10 +51,10 @@ class AutoLinkerPageViewExtension(PageViewExtension):
 	
 	def on_end_of_word(self, textview, start, end, word, char, editmode):
 		buffer = textview.get_buffer()
-		logger.debug("End of word")
+		logger.debug("End of word, word: %s", word)
 		links = self.link_collector(buffer.notebook.name)
 		clean_word, prefix, suffix = clean(word)
-		logger.debug("Word: %s", clean_word)
+		logger.debug("Clean word: %s", clean_word)
 		if clean_word in links.keys():
 			with buffer.tmp_cursor(start):
 				buffer.delete(start, end)
@@ -63,4 +63,4 @@ class AutoLinkerPageViewExtension(PageViewExtension):
 				buffer.insert_at_cursor(suffix)
 			buffer.set_modified(True)
 			textview.stop_emission('end_of_word')
-		else: logger.debug(links)
+			logger.debug(clean_word + " linked to " + links[clean_word]
