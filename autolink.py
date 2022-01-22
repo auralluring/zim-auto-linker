@@ -63,4 +63,4 @@ class AutoLinkerPageViewExtension(PageViewExtension):
 				buffer.insert_at_cursor(suffix)
 			buffer.set_modified(True)
 			textview.stop_emission('end_of_word')
-			logger.debug(clean_word + " linked to " + links[clean_word]
+			logger.debug(clean_word + " linked to " + links[clean_word])
